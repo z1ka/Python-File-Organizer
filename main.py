@@ -2,9 +2,6 @@ import os
 import shutil
 from pathlib import Path
 
-# Changes Directory to Desktop
-os.chdir(os.path.expanduser("~/Desktop"))
-
 
 audio = (".3ga", ".aac", ".ac3", ".aif", ".aiff", ".alac", ".amr", ".ape", ".au", ".dss", ".flac", ".flv", ".m4a", ".m4b", ".m4p", ".mp3", ".mpga", ".ogg", ".oga", ".mogg", ".opus", ".qcp", ".tta", ".voc", ".wav", ".wma", ".wv")
 
@@ -12,13 +9,13 @@ video = (".webm", ".MTS", ".M2TS", ".TS", ".mov", ".mp4", ".m4p", ".m4v", ".mxf"
 
 img = (".jpg", ".jpeg", ".jfif", ".pjpeg", ".pjp", ".png", ".gif", ".webp", ".svg", ".apng", ".avif", ".JPG", ".JPEG")
 
-zipf = (".zip", ".ZIP")
+zipf = (".zip", ".rar")
 
 torrent = (".torrent", ".Torrent")
 
-txt = (".txt", ".TXT")
+txt = (".txt", ".TXT", ".rtf")
 
-office = (".pdf", ".doc", ".docm", ".docx", ".html",
+documents = (".pdf", ".doc", ".docm", ".docx", ".html",
           ".odt", ".pot", ".pptx")
 
 codes = (".c",".py",".java",".cpp",".js",".html",".css",".php", ".jar")
@@ -29,7 +26,7 @@ Path("Videos").mkdir(exist_ok=True)
 Path("Photos").mkdir(exist_ok=True)
 Path("ZIP").mkdir(exist_ok=True)
 Path("Torrents").mkdir(exist_ok=True)
-Path("Office").mkdir(exist_ok=True)Audio
+Path("Documents").mkdir(exist_ok=True)
 Path("Text Files").mkdir(exist_ok=True)
 Path("Codes").mkdir(exist_ok=True)
 
@@ -49,8 +46,8 @@ def is_zip(file):
 def is_torrent(file):
     return os.path.splitext(file)[1] in torrent
 
-def is_office(file):
-    return os.path.splitext(file)[1] in office
+def is_documents(file):
+    return os.path.splitext(file)[1] in documents
 
 def is_txt(file):
     return os.path.splitext(file)[1] in txt
@@ -71,8 +68,8 @@ for file in os.listdir():
         shutil.move(file, "ZIP")
     elif is_torrent(file):
         shutil.move(file, "Torrents")
-    elif is_office(file):
-        shutil.move(file, "Office")
+    elif is_documents(file):
+        shutil.move(file, "Documents")
     elif is_txt(file):
         shutil.move(file, "Text Files")
     elif is_codes(file):
@@ -80,5 +77,6 @@ for file in os.listdir():
 
 # Exit Message to User
 print('Hello, ' + os.getlogin() + '!')
-print("Your Desktop is now Organized, You will see 8 new Folders.")
+print("i'm done organizing, You will see 8 new Folders.")
 input('Press ENTER to exit')
+
