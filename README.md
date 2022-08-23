@@ -1,6 +1,7 @@
-# Python Desktop CleanUp Tool
-CleanUp organizes your desktop by sending specific file extensions in your dekstop to (8) new subfolders
-(Audio - Videos - Photos - ZIP - Torrents - Office - Text Files - Codes)
+# Python Directory CleanUp Tool
+CleanUp organizes folders by sending specific file extensions in your current directory to (8) new subfolders
+(Audio - Videos - Photos - ZIP - Torrents - Documents - Text Files - Codes)
 
 
-![carbon](https://user-images.githubusercontent.com/41465801/185801421-353cd040-d766-4c3f-afe7-7fecfecc6979.png)
+![carbon](https://user-images.githubusercontent.com/41465801/186241636-ed600eb0-a2fd-43eb-b24c-bf15de5fd9b4.png)
+
