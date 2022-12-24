@@ -1,6 +1,7 @@
 import os
 import shutil
 from pathlib import Path
+import PySimpleGUI as sg
 
 
 audio = (".3ga", ".aac", ".ac3", ".aif", ".aiff", ".alac", ".amr", ".ape", ".au", ".dss", ".flac", ".flv", ".m4a", ".m4b", ".m4p", ".mp3", ".mpga", ".ogg", ".oga", ".mogg", ".opus", ".qcp", ".tta", ".voc", ".wav", ".wma", ".wv")
@@ -33,25 +34,18 @@ Path("Codes").mkdir(exist_ok=True)
 # Functions to determine extension type
 def is_audio(file):
     return os.path.splitext(file)[1] in audio
-
 def is_video(file):
     return os.path.splitext(file)[1] in video
-
 def is_image(file):
     return os.path.splitext(file)[1] in img
-
 def is_zip(file):
     return os.path.splitext(file)[1] in zipf
-
 def is_torrent(file):
     return os.path.splitext(file)[1] in torrent
-
 def is_documents(file):
     return os.path.splitext(file)[1] in documents
-
 def is_txt(file):
     return os.path.splitext(file)[1] in txt
-
 def is_codes(file):
     return os.path.splitext(file)[1] in codes
 
@@ -75,8 +69,24 @@ for file in os.listdir():
     elif is_codes(file):
         shutil.move(file, "Codes")
 
+sg.theme('DarkGrey15')
 # Exit Message to User
-print('Hello, ' + os.getlogin() + '!')
-print("i'm done organizing, You will see 8 new Folders.")
-input('Press ENTER to exit')
+layout = [[sg.Text('Hello, ' + os.getlogin() + '!',size=(15, 1))],
+          [sg.Text("I'm done organizing, if it's your first time using CleanUp")],
+          [sg.Text("You will see 8 new Folders.")],
+          [sg.Text("\n(Audio - Videos - Photos - ZIP - Torrents - Documents - Text Files - Codes)")],
+          [sg.Button('Quit')]]
 
+# Create the window
+window = sg.Window('CleanUp', layout)
+
+# Display and interact with the Window using an Event Loop
+while True:
+    event, values = window.read()
+    # See if user wants to quit or window was closed
+    if event == sg.WINDOW_CLOSED or event == 'Quit':
+        break
+
+
+# Finish up by removing from the screen
+window.close()
