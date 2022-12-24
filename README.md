@@ -1,4 +1,4 @@
-# Python Directory CleanUp Tool
+# GUI Python Directory CleanUp Tool
 CleanUp organizes folders by sending specific file extensions in your current directory to (8) new subfolders
 (Audio - Videos - Photos - ZIP - Torrents - Documents - Text Files - Codes)
 
