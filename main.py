@@ -10,7 +10,7 @@ video = (".webm", ".MTS", ".M2TS", ".TS", ".mov", ".mp4", ".m4p", ".m4v", ".mxf"
 
 img = (".jpg", ".jpeg", ".jfif", ".pjpeg", ".pjp", ".png", ".gif", ".webp", ".svg", ".apng", ".avif", ".JPG", ".JPEG")
 
-zipf = (".zip", ".rar")
+zipf = (".a", ".ar", ".cpio", ".iso", ".tar", ".gz", ".rz", ".7z", ".dmg", ".rar", ".xar", ".zip")
 
 torrent = (".torrent", ".Torrent")
 
@@ -69,13 +69,14 @@ for file in os.listdir():
     elif is_codes(file):
         shutil.move(file, "Codes")
 
-sg.theme('DarkGrey15')
+sg.theme('Darkgrey15')
 # Exit Message to User
 layout = [[sg.Text('Hello, ' + os.getlogin() + '!',size=(15, 1))],
           [sg.Text("I'm done organizing, if it's your first time using CleanUp")],
           [sg.Text("You will see 8 new Folders.")],
-          [sg.Text("\n(Audio - Videos - Photos - ZIP - Torrents - Documents - Text Files - Codes)")],
-          [sg.Button('Quit')]]
+          [sg.Text("\n(Audio - Videos - Photos - ZIP - Torrents - Documents - Text Files - Codes)\n")],
+          [sg.Button('Quit', size = (53, 1), button_color= ('white','black'))],
+          [sg.Text("")]]
 
 # Create the window
 window = sg.Window('CleanUp', layout)
