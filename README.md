@@ -1,4 +1,4 @@
-# GUI Python Directory Organizing Tool
+# GUI Python File Organizing Tool
 CleanUp organizes your directory by sending specific files in your current directory to new folders of your choosing
 (Audio - Videos - Photos - ZIP - Torrents - Documents - Text Files - Codes)
 
