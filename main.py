@@ -22,14 +22,14 @@ documents = (".pdf", ".doc", ".docm", ".docx", ".html",
 codes = (".c",".py",".java",".cpp",".js",".html",".css",".php", ".jar")
 
 # Creating Folders
-Path("Audio").mkdir(exist_ok=True)
+'''Path("Audio").mkdir(exist_ok=True)
 Path("Videos").mkdir(exist_ok=True)
 Path("Photos").mkdir(exist_ok=True)
 Path("ZIP").mkdir(exist_ok=True)
 Path("Torrents").mkdir(exist_ok=True)
 Path("Documents").mkdir(exist_ok=True)
 Path("Text Files").mkdir(exist_ok=True)
-Path("Codes").mkdir(exist_ok=True)
+Path("Codes").mkdir(exist_ok=True)'''
 
 # Functions to determine extension type
 def is_audio(file):
@@ -51,7 +51,7 @@ def is_codes(file):
 
 
 # Loop
-for file in os.listdir():
+"""for file in os.listdir():
     if is_audio(file):
         shutil.move(file, "Audio")
     elif is_video(file):
@@ -67,16 +67,28 @@ for file in os.listdir():
     elif is_txt(file):
         shutil.move(file, "Text Files")
     elif is_codes(file):
-        shutil.move(file, "Codes")
+        shutil.move(file, "Codes")"""
 
 sg.theme('Darkgrey15')
 # Exit Message to User
-layout = [[sg.Text('Hello, ' + os.getlogin() + '!',size=(15, 1))],
-          [sg.Text("I'm done organizing, if it's your first time using CleanUp")],
-          [sg.Text("You will see 8 new Folders.")],
-          [sg.Text("\n(Audio - Videos - Photos - ZIP - Torrents - Documents - Text Files - Codes)\n")],
+layout = [
+          [sg.Text('Hello, ' + os.getlogin() + '!',size=(15, 1))],
+          [sg.Text("Please check the boxes you want organized, and then click organize")],
+          [sg.Text("your files will be saved in new folders.")],
+          [sg.Text("")],
+          [sg.Checkbox('Audio', default=False, key='-Audio'),
+          sg.Checkbox('Videos',default=False, key='-Videos'),
+          sg.Checkbox('Photos', default=False, key='-Photos'),
+          sg.Checkbox('ZIP',default=False, key='-ZIP')],
+          [sg.Checkbox('Torrents', default=False, key='-Torrents'),
+          sg.Checkbox('Documents',default=False, key='-Documents'),
+          sg.Checkbox('Text Files', default=False, key='-Text'),
+          sg.Checkbox('Codes',default=False, key='-Codes')],
+          [sg.Text("")],
+          [sg.Button('Organize', size=(53, 1), button_color=('white', 'gray'))],
           [sg.Button('Quit', size = (53, 1), button_color= ('white','black'))],
-          [sg.Text("")]]
+          [sg.Text("")]
+]
 
 # Create the window
 window = sg.Window('CleanUp', layout)
@@ -87,6 +99,34 @@ while True:
     # See if user wants to quit or window was closed
     if event == sg.WINDOW_CLOSED or event == 'Quit':
         break
+
+    if event == 'Organize':
+        for file in os.listdir():
+            if is_audio(file) and values['-Audio']==True:
+                Path("Audio").mkdir(exist_ok=True)
+                shutil.move(file, "Audio")
+            elif is_video(file) and values['-Videos']==True:
+                Path("Videos").mkdir(exist_ok=True)
+                shutil.move(file, "Videos")
+            elif is_image(file) and values['-Photos']==True:
+                Path("Photos").mkdir(exist_ok=True)
+                shutil.move(file, "Photos")
+            elif is_zip(file) and values['-ZIP']==True:
+                Path("ZIP").mkdir(exist_ok=True)
+                shutil.move(file, "ZIP")
+            elif is_torrent(file) and values['-Torrents']==True:
+                Path("Torrents").mkdir(exist_ok=True)
+                shutil.move(file, "Torrents")
+            elif is_documents(file) and values['-Documents']==True:
+                Path("Documents").mkdir(exist_ok=True)
+                shutil.move(file, "Documents")
+            elif is_txt(file) and values['-Text']==True:
+                Path("Text Files").mkdir(exist_ok=True)
+                shutil.move(file, "Text Files")
+            elif is_codes(file) and values['-Codes']==True:
+                Path("Codes").mkdir(exist_ok=True)
+                shutil.move(file, "Codes")
+    sg.Popup('     Done!', keep_on_top=True)
 
 
 # Finish up by removing from the screen
